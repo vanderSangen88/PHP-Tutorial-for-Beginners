@@ -236,5 +236,170 @@ switch ($dayofweek) {
 ```
 ---
 
+### 27. Session and Cookies in PHP
+
+```php
+/*
+$_COOKIE: saves information on the Client Side | has a time limit
+$_SESSION: saves information on the Server Side | ends as soon as the browser is closed
+*/
+
+// setcookie("name", "Test", time() + 86400); // Creates cookie with name "Test"
+setcookie("name", "Test", time() - 1); // Destroys cookie with name "Test"
+
+$_SESSION['name'] = '12'; // Creates session with name "12"
+```
+---
+
+### 28. How to Start a Session in PHP
+On every page at the top:
+
+```html
+<?php
+    session_start(); 
+?>
+
+```
+```php
+// Check if session's username is set
+if(!isset($_SESSION['username'])) {
+    // if false
+} else {
+    // if true
+}
+```
+---
+
+### 29. How to Create a MySQL Database for PHP
+Create database: for example `phplessons`.   
+! Use lower-letters & under_scores as a best practise.
+
+---
+
+### 30. Create a MySQL Table in Database
+A table stores one type of data in the database.
+1) `create` table called "posts".
+2) first column "id" of type `int()` with max 11 numbers.
+3) `not null`: it can not be empty
+4) `PRIMARY KEY`: no other row can have the same id.
+5)  `AUTO_INCREMENT`: each record will have an increased id.  
+--
+6) second column "subject" of type `varchar()` with max 128 characters.  
+--
+7) third column "content" of type `varchar()` with max 1000 characters.  
+--
+8) fourth column "date" of type `datetime`.
+```sql
+CREATE table posts (
+    id INT(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    subject VARCHAR(128) NOT NULL,
+    content VARCHAR(1000) NOT NULL,
+    date DATETIME NOT NULL
+);
+```
+---
+
+### 31. MySQL Insert into Database
+In database `phplessons`:
+1) `insert` data in table "posts".
+```sql
+INSERT INTO posts (subject, content, date) VALUES ('This is the subject', 'Lorum ipsum blablabla', '2018-05-09 14:33:01');
+```
+---
+
+### 32. Select Data From MySQL Database
+
+```sql
+-- select subject from posts
+SELECT * FROM posts WHERE id='1' AND subject='This is the subject'
+```
+---
+
+### 33. Update Data From MySQL Database
+
+```sql
+UPDATE posts
+SET subject='This is a test', content='This is the content'
+WHERE id='1'
+```
+---
+
+### 34. Delete Data From MySQL Database
+
+```sql
+DELETE FROM posts
+WHERE id='1'
+```
+---
+
+### 35. Set Data Order From MySQL Database
+
+```sql
+-- SELECT * FROM posts ORDER BY id DESC
+SELECT * FROM posts ORDER BY subject ASC
+```
+---
+
+### 36. How to connect to a database in PHP
+in /includes/dbh.inc.php:
+```php
+// XAMPP
+$dbServername = "localhost";
+$dbUsername = "root";
+$dbPassword = "";
+$dbName = "loginsystem";
+
+// Call inside PHP-block
+$conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName);
+```
+in index.php:
+```html
+<?php 
+    // at the top:
+    include_once './includes/dbh.inc.php';
+?>
+...
+<?php 
+    // connect to database:
+    $conn;
+?>
+```
+---
+
+### 37. How to show database data on a website using MySQLi
+```sql
+CREATE TABLE users (
+    user_id int(11) AUTO_INCREMENT PRIMARY KEY not null,
+    user_first varchar(256) not null,
+    user_last varchar(256) not null,
+    user_email varchar(256) not null,
+    user_uid varchar(256) not null,
+    user_pwd varchar(256) not null
+);
+
+INSERT INTO users (user_first, user_last, user_email, user_uid, user_pwd)
+    VALUES ('Nick', 'van der Sangen', 'sangen@x-ingredient.nl', 'Admin', 'test123');
+INSERT INTO users (user_first, user_last, user_email, user_uid, user_pwd)
+    VALUES ('Jane', 'Doe', 'jane@jane.com', 'jane249a', 'test789');
+```
+
+in index.php:
+```php
+    $sql = "SELECT * FROM users;";
+    $result = mysqli_query($conn, $sql);
+
+    // Only execute when there are results
+    $resultCheck = mysqli_num_rows($result);
+    if($resultCheck > 0) {
+        // store each row in the $row-array
+        while ($row = mysqli_fetch_assoc($result)) {
+            // access by passing the name of the column
+            echo $row['user_uid'] . "<br />";
+        }
+    }
+```
+---
+
+
 
 

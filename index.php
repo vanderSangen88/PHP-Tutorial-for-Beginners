@@ -1,3 +1,7 @@
+<?php
+    include_once './includes/dbh.inc.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,54 +10,22 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
-
-<!-- <style>
-    p {
-        text-align: center;
-        font-size: 120px;
-        font-family: Arial;
-        margin-top: 38vh;
-    }
-</style> -->
 <body>
 
-<!-- Start Hypertext Preprocessor -->
 <?php
+    $sql = "SELECT * FROM users;";
+    $result = mysqli_query($conn, $sql);
 
-    $dayofweek = date('w'); 
-    // echo $dayofweek;
-    switch ($dayofweek) {
-        case 1:
-            echo "It is Monday!";
-            break;
-
-        case 2:
-            echo "It is Tuesday!";
-            break;
-
-        case 3:
-            echo "<p>It is Wednesday!</p>";
-            break;
-
-        case 4:
-            echo "It is Thursday!";
-            break;
-
-        case 5:
-            echo "It is Friday!";
-            break;
-
-        case 6:
-            echo "It is Saturday!";
-            break;
-
-        case 0:
-            echo "It is Sunday!";
-            break;
+    // Only execute when there are results
+    $resultCheck = mysqli_num_rows($result);
+    if($resultCheck > 0) {
+        // store each row in the $row-array
+        while ($row = mysqli_fetch_assoc($result)) {
+            // access by passing the name of the column
+            echo $row['user_uid'] . "<br />";
+        }
     }
-
 ?>
-<!-- End PHP -->
 
 </body>
 </html>
