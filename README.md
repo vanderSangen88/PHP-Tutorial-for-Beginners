@@ -130,12 +130,111 @@ else {
 ```
 ---
 
-### 15. Exercise Using PHP| Let's Build a Calculator
+### 14. Switch Statements in PHP
 ```php
-
+$x = 8;
+switch ($x) {
+    case 1: 
+        echo "The answer is 1";
+    break;
+    case 1: 
+        echo "The answer is 1";
+    break;
+    default:
+        echo "There is no answer!";
+}
 ```
 ---
 
+### 15. Exercise Using PHP| Let's Build a Calculator
+```html
+<form action="">
+    <input type="text" name="num1" placeholder="Number 1" />
+    <input type="text" name="num2" placeholder="Number 2" />
+    <select name="operator" id="">
+        <option value="None">None</option>
+        <option value="Add">Add</option>
+        <option value="Subtract">Subtract</option>
+        <option value="Multiply">Multiply</option>
+        <option value="Divide">Divide</option>
+    </select>
+    <br />
+    <button type="submit" name="submit" value="submit">Calculate</button>
+</form>
+<p>
+    The answer is:
+</p>
+
+<?php
+...
+?>
+```
+```php
+// Check if the submit-button has been clicked
+    if ( isset($_GET['submit']) ) {
+        // Get information from URL
+        $result1 = $_GET['num1'];
+        $result2 = $_GET['num2'];
+        $operator = $_GET['operator'];
+
+        switch ($operator) {
+            case "None": 
+                echo "You need to select a method!";
+            break;
+            case "Add": 
+                echo $result1 + $result2;
+            break;
+            case "Subtract": 
+                echo $result1 - $result2;
+            break;
+            case "Multiply": 
+                echo $result1 * $result2;
+            break;
+            case "Divide": 
+                echo $result1 / $result2;
+            break;
+        }
+    }
+```
+---
+
+### 16. Exercise Using PHP | Scheduled Message Programming
+[w3schools date parameters](https://www.w3schools.com/php/func_date_date.asp)
+
+```php
+$dayofweek = date('w'); 
+// echo $dayofweek;
+switch ($dayofweek) {
+    case 1:
+        echo "It is Monday!";
+        break;
+
+    case 2:
+        echo "It is Tuesday!";
+        break;
+
+    case 3:
+        echo "<p>It is Wednesday!</p>";
+        break;
+
+    case 4:
+        echo "It is Thursday!";
+        break;
+
+    case 5:
+        echo "It is Friday!";
+        break;
+
+    case 6:
+        echo "It is Saturday!";
+        break;
+
+    case 0:
+        echo "It is Sunday!";
+        break;
+}
+```
+---
 
 
 
