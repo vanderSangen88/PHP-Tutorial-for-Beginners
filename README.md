@@ -79,6 +79,7 @@ echo $names['1'];
     echo $x;
 ```
 ---
+
 ### 10. What Are Comparison Operators in PHP
 ```php
 // Comparison Operators
@@ -91,6 +92,57 @@ echo $names['1'];
     else {
         echo "False";
     }
+```
+---
+
+### 11. What Are Increment and Decrement Operators in PHP
+```php
+// Increment/Decrement Operators
+    $x = 10;
+    // echo ++$x; // 11
+    echo $x++; // 10
+    echo $x; // 11
+```
+---
+
+### 12. What Are Logical Operators in PHP
+```php
+// Logical Operators: or || / and && / xor
+    $x = 10;
+    $y = 20;
+    if($x == $y xor 1 == 1){ // one of these conditions has to be true, but can only be one 
+        echo "True";
+    }
+```
+
+### 13. Various Conditional Statements in PHP
+```php
+$x = 2;
+if ($x == 1) {
+    echo "One";
+} 
+elseif ($x == 2) {
+    echo "Two";
+}
+else {
+    echo "Three";
+}
+```
+---
+
+### 14. Switch Statements in PHP
+```php
+$x = 8;
+switch ($x) {
+    case 1:
+        echo "The answer is 1";
+    break;
+    case 2:
+        echo "The answer is 2";
+    break;
+    default: 
+        echo "There is no answer";
+} 
 ```
 ---
 
