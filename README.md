@@ -130,19 +130,9 @@ else {
 ```
 ---
 
-### 14. Switch Statements in PHP
+### 15. Exercise Using PHP| Let's Build a Calculator
 ```php
-$x = 8;
-switch ($x) {
-    case 1:
-        echo "The answer is 1";
-    break;
-    case 2:
-        echo "The answer is 2";
-    break;
-    default: 
-        echo "There is no answer";
-} 
+
 ```
 ---
 
