@@ -400,6 +400,36 @@ in index.php:
 ```
 ---
 
+### 38. Insert data from a website into a database using MySQLi
+in index.php:
+```html
+<form action="./includes/signup.inc.php" method="POST">
+    <input type="text" name="first" placeholder="Firstname" /><br />
+    <input type="text" name="last" placeholder="Lastname" /><br />
+    <input type="text" name="email" placeholder="E-mail" /><br />
+    <input type="text" name="uid" placeholder="Username" /><br />
+    <input type="password" name="pwd" placeholder="Password" /><br />
+    <button type="submit" name="submit">Sign up</button>
+</form>
+```
+in signup.inc.php
+```php
+    include_once './dbh.inc.php';
+
+    $first = $_POST['first'];
+    $last = $_POST['last'];
+    $email = $_POST['email'];
+    $uid = $_POST['uid'];
+    $pwd = $_POST['pwd'];
+
+    $sql = "INSERT INTO users (user_first, user_last, user_email, user_uid, user_pwd)
+    VALUES ('$first', '$last', '$email', '$uid', '$pwd');";
+    mysqli_query($conn, $sql);
+
+    header("Location: ../index.php?signup=success");
+```
+---
+
 
 
 
